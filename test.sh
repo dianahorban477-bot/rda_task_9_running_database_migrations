@@ -9,7 +9,7 @@ docker run --name mysql --network=test-network --hostname mysql  \
 -e MYSQL_ROOT_PASSWORD=P@ssw0rd -v $(pwd):/scripts -d mysql:8.0-debian
 
 echo "INFO: Wainting for database server to initialize"
-sleep 15 
+sleep 40
 
 echo "INFO: Creating a database for test"
 docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/1-create-database.sql'
