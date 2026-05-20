@@ -39,12 +39,16 @@ CREATE TABLE ProductInventory (
 );
 --rollback DROP TABLE ProductInventory;
 
+--changeset mate.acamemy:5 labels:0.0.1
 CREATE TABLE Users (
-    ID INT,
+    ID INT AUTO_INCREMENT,
     FirstName VARCHAR(100),
     LastName VARCHAR(100),
     Email VARCHAR(200),
     PRIMARY KEY (ID)
 );
+--rollback DROP TABLE Users;
 
+--changeset mate.acamemy:6 labels:0.0.1
 CREATE INDEX idx_users_email ON Users (Email);
+--rollback DROP INDEX idx_users_email ON Users;
