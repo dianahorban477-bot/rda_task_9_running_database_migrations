@@ -44,11 +44,11 @@ CREATE TABLE Users (
     ID INT AUTO_INCREMENT,
     FirstName VARCHAR(100),
     LastName VARCHAR(100),
-    Email VARCHAR(200),
+    email VARCHAR(200),
     PRIMARY KEY (ID)
 );
 --rollback DROP TABLE Users;
 
 --changeset mate.academy:6 labels:0.0.2,0.0.3
-CREATE INDEX idx_users_email ON Users (Email);
+CREATE INDEX idx_users_email ON Users (email);
 --rollback DROP INDEX idx_users_email ON Users;
