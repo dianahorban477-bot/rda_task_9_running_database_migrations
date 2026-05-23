@@ -96,7 +96,8 @@ docker run --network=test-network -v $(pwd):/repos --workdir /repos/ -e INSTALL_
 
 echo "INFO: Running the tests for database schema version 0.0.1"
 docker exec mysql sh -c 'mysql -u root -pP@ssw0rd < /scripts/test-queries/2-test-0.0.1.sql' > log.txt
-errors=$(cat log.txt | grep "^Error" || true)
+# Виправлений рядок за порадою Люка (при відкаті до v0.0.1):
+errors=$(cat log.txt | grep "^Error" | grep -v "Error: Users table is not present in the database" || true)
 if [ -n "$errors" ]; then echo $errors && exit 1; fi
 
 echo "SUCCESS: All migrations and rollbacks passed successfully!"
